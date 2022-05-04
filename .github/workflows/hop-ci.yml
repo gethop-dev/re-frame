@@ -1,0 +1,23 @@
+name: hop-ci
+on: push
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-20.04
+    steps:
+      run: |
+        - npm i -g npm
+        - npm i -g karma-cli
+        - npm install
+        - yes y | sudo lein upgrade
+        - lein ci
+  deploy:
+    name: Deploy
+    needs: test
+    runs-on: ubuntu-20.04
+    steps:
+      if: github.event_name == 'push' && contains(github.ref, 'refs/tags/')
+      env:
+        CLOJARS_USERNAME: ${{ secrets.CLOJARS_USERNAME }}
+        CLOJARS_PASSWORD: ${{ secrets.CLOJARS_PASSWORD }}
+      run: lein deploy

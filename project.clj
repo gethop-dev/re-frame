@@ -1,6 +1,6 @@
-(defproject     re-frame "lein-git-inject/version"
+(defproject     dev.gethop/re-frame "1.3.0-rc3"
   :description  "A ClojureScript MVC-like Framework For Writing SPAs Using Reagent."
-  :url          "https://github.com/day8/re-frame.git"
+  :url          "https://github.com/gethop-dev/re-frame.git"
   :license      {:name "MIT"}
 
   :dependencies [[org.clojure/clojure       "1.10.3"   :scope "provided"]
@@ -43,12 +43,14 @@
                                        :macosx          "open"
                                        :linux           "xdg-open"}}}
 
-  :deploy-repositories [["clojars" {:sign-releases false
-                                    :url "https://clojars.org/repo"
-                                    :username :env/CLOJARS_USERNAME
-                                    :password :env/CLOJARS_TOKEN}]]
-
-  :release-tasks [["deploy" "clojars"]]
+  :deploy-repositories [["snapshots" {:sign-releases false
+                                      :url "https://clojars.org/repo"
+                                      :username :env/CLOJARS_USERNAME
+                                      :password :env/CLOJARS_PASSWORD}]
+                        ["releases" {:sign-releases false
+                                     :url "https://clojars.org/repo"
+                                     :username :env/CLOJARS_USERNAME
+                                     :password :env/CLOJARS_PASSWORD}]]
 
   :shadow-cljs {:nrepl  {:port 8777}
 

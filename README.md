@@ -16,10 +16,11 @@ y'know. Pretty good.
 <br/>
 
 <!--
-[![CI](https://github.com/day8/re-frame/workflows/ci/badge.svg)](https://github.com/day8/re-frame/actions?workflow=ci)
-[![CD](https://github.com/day8/re-frame/workflows/cd/badge.svg)](https://github.com/day8/re-frame/actions?workflow=cd)
-[![License](https://img.shields.io/github/license/day8/re-frame.svg)](license.txt)
+[![License](https://img.shields.io/github/license/gethop-dev/re-frame.svg)](license.txt)
 -->
+
+## Important notice
+This fork of re-frame keeps its original behavior for Single-Page applications, but it adds special behaviour [to support SSR](SSR_SUPPORT.md).
 
 ## Overview
 
@@ -47,9 +48,9 @@ The re-frame documentation is [available here](https://day8.github.io/re-frame/)
 
 ## The Current Version 
 
-[![Clojars Project](https://img.shields.io/clojars/v/re-frame?labelColor=283C67&color=729AD1&style=for-the-badge&logo=clojure&logoColor=fff)](https://clojars.org/re-frame)
+[![Clojars Project](https://img.shields.io/clojars/v/dev.gethop/re-frame?labelColor=283C67&color=729AD1&style=for-the-badge&logo=clojure&logoColor=fff)](https://clojars.org/dev.gethop/re-frame)
 
-For full dependency information, see the [Clojars page](https://clojars.org/re-frame/)
+For full dependency information, see the [Clojars page](https://clojars.org/dev.gethop/re-frame)
 
 ## Getting Help 
 
