@@ -5,12 +5,12 @@ jobs:
     name: Test
     runs-on: ubuntu-20.04
     steps:
-      run: |
-        - npm i -g npm
-        - npm i -g karma-cli
-        - npm install
-        - yes y | sudo lein upgrade
-        - lein ci
+      - run: |
+          - npm i -g npm
+          - npm i -g karma-cli
+          - npm install
+          - yes y | sudo lein upgrade
+          - lein ci
   deploy:
     name: Deploy
     needs: test
