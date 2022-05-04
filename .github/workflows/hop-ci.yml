@@ -16,8 +16,8 @@ jobs:
     needs: test
     runs-on: ubuntu-20.04
     steps:
-      if: github.event_name == 'push' && contains(github.ref, 'refs/tags/')
-      env:
-        CLOJARS_USERNAME: ${{ secrets.CLOJARS_USERNAME }}
-        CLOJARS_PASSWORD: ${{ secrets.CLOJARS_PASSWORD }}
-      run: lein deploy
+      - if: github.event_name == 'push' && contains(github.ref, 'refs/tags/')
+        env:
+          CLOJARS_USERNAME: ${{ secrets.CLOJARS_USERNAME }}
+          CLOJARS_PASSWORD: ${{ secrets.CLOJARS_PASSWORD }}
+        run: lein deploy
