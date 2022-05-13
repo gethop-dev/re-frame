@@ -29,11 +29,11 @@ jobs:
 
       - name: Tests and Lein CI
         run: |
-          - npm i -g npm
-          - npm i -g karma-cli
-          - npm install
-          - yes y | sudo lein upgrade
-          - lein ci
+          npm i -g npm
+          npm i -g karma-cli
+          npm install
+          yes y | sudo lein upgrade
+          lein ci
 
       - name: Deploy Jar to Clojars
         if: contains(github.ref, 'refs/tags/')
