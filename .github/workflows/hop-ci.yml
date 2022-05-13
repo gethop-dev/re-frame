@@ -4,20 +4,37 @@ jobs:
   test:
     name: Test
     runs-on: ubuntu-20.04
+    env:
+      CLOJARS_USERNAME: ${{ secrets.CLOJARS_USERNAME }}
+      CLOJARS_PASSWORD: ${{ secrets.CLOJARS_PASSWORD }}
     steps:
-      - run: |
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Install leiningen
+        uses: DeLaGuardo/setup-clojure@5.1
+        with:
+          lein: 2.9.8
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Tests and Lein CI
+        run: |
           - npm i -g npm
           - npm i -g karma-cli
           - npm install
           - yes y | sudo lein upgrade
           - lein ci
-  deploy:
-    name: Deploy
-    needs: test
-    runs-on: ubuntu-20.04
-    steps:
-      - if: github.event_name == 'push' && contains(github.ref, 'refs/tags/')
-        env:
-          CLOJARS_USERNAME: ${{ secrets.CLOJARS_USERNAME }}
-          CLOJARS_PASSWORD: ${{ secrets.CLOJARS_PASSWORD }}
+
+      - name: Deploy Jar to Clojars
+        if: contains(github.ref, 'refs/tags/')
         run: lein deploy
